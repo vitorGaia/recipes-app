@@ -1,19 +1,11 @@
 'use client';
 import Image from 'next/image';
-import headerIcon from '../../images/header/iconeRecipesAppHeader.svg';
-import headerLogo from '../../images/header/logoRecipesAppHeader.svg';
-import headerIconSeach from '../../images/header/iconePesquiarHeader.svg';
-import headerIconPerfil from '../../images/header/iconePerfilHeader.svg';
-import mealsIcon from '../../images/header/mealsIcon.svg';
-import drinksIcon from '../../images/header/drinksIcon.svg';
-import doneRecipesIcon from '../../images/header/doneRecipesIcon.svg';
-import favoritesIcon from '../../images/header/favoritesIcon.svg';
-import profileIcon from '../../images/header/profileIcon.svg';
-import styles from './page.module.css';
+import { headerIcons } from '../../images/header';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useContext } from 'react';
 import { SearchContext } from '@/app/contexts/SearchProvider';
+import styles from './page.module.css';
 
 function Header() {
   interface Icons {
@@ -32,11 +24,11 @@ function Header() {
   const pathname = usePathname();
   const formatPath = pathname.substring(pathname.lastIndexOf("/") + 1).toLowerCase();
   const icons: Icons = {
-    meals: mealsIcon,
-    drinks: drinksIcon,
-    donerecipes: doneRecipesIcon,
-    favorites: favoritesIcon,
-    profile: profileIcon,
+    meals: headerIcons.mealsIcon,
+    drinks: headerIcons.drinksIcon,
+    donerecipes: headerIcons.doneRecipesIcon,
+    favorites: headerIcons.favoritesIcon,
+    profile: headerIcons.profileIcon,
   };
   
   return (
@@ -44,14 +36,14 @@ function Header() {
       <nav>
         <div className={styles.headerContainerLogo}>
           <Image
-            src={headerIcon}
+            src={headerIcons.iconeRecipesApp}
             alt="logo"
             width="40"
             height="40"
             priority
           />
           <Image
-            src={headerLogo}
+            src={headerIcons.logoRecipesApp}
             alt="logo"
             width="80"
             height="40"
@@ -61,7 +53,7 @@ function Header() {
         <div className={styles.headerContainerNavIcons}>
           <button>
             <Image
-              src={headerIconSeach}
+              src={headerIcons.iconePesquisar}
               alt="logo"
               width="27"
               height="27"
@@ -71,7 +63,7 @@ function Header() {
           </button>
           <Link href='/pages/Profile'>
             <Image
-              src={headerIconPerfil}
+              src={headerIcons.iconePerfil}
               alt="logo"
               width="27"
               height="27"
