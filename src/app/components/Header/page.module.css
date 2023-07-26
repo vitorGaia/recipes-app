@@ -1,0 +1,43 @@
+.headerContainer {
+  /* background-color: aqua; */
+  height: 144px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerContainer nav {
+  background-color: #FCDC36;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  overflow: hidden;
+  height: 54px;
+  width: 100%;
+}
+
+.headerContainerLogo {
+  display: flex;
+  gap: 1rem;
+}
+
+.headerContainerNavIcons {
+  display: flex;
+  gap: 1rem;
+}
+
+.sectionIcon {
+  /* background-color: #FCDC36; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sectionIcon span {
+  color: #41197F;
+  font-weight: 900;
+  font-size: 1.5rem;
+}

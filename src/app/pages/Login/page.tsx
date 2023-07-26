@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
-import tomate from '../../images/tomate.png';
-import logo from '../../images/logoRecipesApp.png';
+import tomate from '../../images/login/tomateLogin.svg';
+import logo from '../../images/login/logoRecipesAppLogin.svg';
 import styles from './page.module.css'
 import Image from 'next/image';
 import { setUserLocalStorage } from '../../../../services/localStorage/userLogin';
