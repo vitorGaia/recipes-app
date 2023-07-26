@@ -3,6 +3,13 @@ body, * {
   padding: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
-  background-color: #171820;
-  color: #fff;
+}
+
+main {
+  max-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

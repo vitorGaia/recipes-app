@@ -1,7 +1,7 @@
-import styles from './page.module.css'
+import Login from './pages/Login/page'
 
 export default function Home() {
   return (
-    <div>Hello World!</div>
+    <Login />
   )
 }
