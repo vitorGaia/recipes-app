@@ -1,11 +1,16 @@
+.displayNone {
+  display: none;
+}
+
 .headerContainer {
   /* background-color: aqua; */
-  height: 144px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .headerContainer nav {
@@ -29,12 +34,19 @@
   gap: 1rem;
 }
 
+.headerContainerNavIcons button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
 .sectionIcon {
   /* background-color: #FCDC36; */
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+  padding-top: 1rem;
 }
 
 .sectionIcon span {
@@ -42,4 +54,44 @@
   font-weight: 900;
   font-size: 1.5rem;
   letter-spacing: 2px;
+}
+
+.headerActiveSearch {
+  height: 110px;
+  background-color: #41197F;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px 5px 10px 10px;
+}
+
+.headerActiveSearch > input {
+  height: 40px;
+  width: 100%;
+  padding: 0 1rem;
+  border-radius: 5px;
+  border: solid 1px #010101;
+}
+
+.headerActiveSearch > div {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.headerActiveSearch > div label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.headerActiveSearch button {
+  height: 25px;
+  width: 70%;
+  margin-bottom: 0.7rem;
+  border-radius: 5px;
+  background-color: #FCC436;
+  border: none;
 }

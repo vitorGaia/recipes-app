@@ -11,22 +11,30 @@ import favoritesIcon from '../../images/header/favoritesIcon.svg';
 import profileIcon from '../../images/header/profileIcon.svg';
 import styles from './page.module.css';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import { useContext } from 'react';
+import { SearchContext } from '@/app/contexts/SearchProvider';
 
 function Header() {
   interface Icons {
     [key: string]: string;
     meals: string;
     drinks: string;
-    doneRecipes: string;
+    donerecipes: string;
     favorites: string;
     profile: string;
   }
+
+  const {
+    activeSearch,
+    setActiveSearch,
+  } = useContext(SearchContext);
   const pathname = usePathname();
   const formatPath = pathname.substring(pathname.lastIndexOf("/") + 1).toLowerCase();
   const icons: Icons = {
     meals: mealsIcon,
     drinks: drinksIcon,
-    doneRecipes: doneRecipesIcon,
+    donerecipes: doneRecipesIcon,
     favorites: favoritesIcon,
     profile: profileIcon,
   };
@@ -51,20 +59,25 @@ function Header() {
           />
         </div>
         <div className={styles.headerContainerNavIcons}>
-          <Image
-            src={headerIconSeach}
-            alt="logo"
-            width="27"
-            height="27"
-            priority
-          />
-          <Image
-            src={headerIconPerfil}
-            alt="logo"
-            width="27"
-            height="27"
-            priority
-          />
+          <button>
+            <Image
+              src={headerIconSeach}
+              alt="logo"
+              width="27"
+              height="27"
+              priority
+              onClick={() => setActiveSearch(!activeSearch)}
+            />
+          </button>
+          <Link href='/pages/Profile'>
+            <Image
+              src={headerIconPerfil}
+              alt="logo"
+              width="27"
+              height="27"
+              priority
+            />
+          </Link>
         </div>
       </nav>
       <div className={styles.sectionIcon}>
@@ -76,6 +89,26 @@ function Header() {
           priority
         />
         <span>{formatPath.toUpperCase()}</span>
+      </div>
+      <div className={!activeSearch ? styles.displayNone : styles.headerActiveSearch}>
+        <input type="text" placeholder="Search" />
+        <div>
+          <label>
+            <input type="radio" />
+            Ingredient
+          </label>
+          <label>
+            <input type="radio" />
+            Name
+          </label>
+          <label>
+            <input type="radio" />
+            First Letter
+          </label>
+        </div>
+        <button>
+          Search
+        </button>
       </div>
     </div>
   );
