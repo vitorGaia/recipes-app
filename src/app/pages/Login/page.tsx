@@ -1,10 +1,19 @@
-import React from 'react';
+'use client';
+import { useState } from 'react';
 import tomate from '../../images/tomate.png';
 import logo from '../../images/logoRecipesApp.png';
 import styles from './page.module.css'
 import Image from 'next/image';
+import { setUserLocalStorage } from '../../../../services/localStorage/userLogin';
 
 function Login() {
+  const [formLogin, setFormLogin] = useState({email: '', password: ''});
+  const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  const handleSubmit = () => {
+    setUserLocalStorage({ email: formLogin.email });
+  };
+
   return (
     <main className={styles.loginPage}>
       <Image
@@ -23,9 +32,23 @@ function Login() {
       />
       <form className={styles.loginForm}>
         <span>LOGIN</span>
-        <input type="text" placeholder="Email" />
-        <input type="password" placeholder="Password" />
-        <button type="button">Enter</button>
+        <input
+          type="text"
+          placeholder="Email"
+          onChange={ (e) => setFormLogin({...formLogin, email: e.target.value}) }
+        />
+        <input
+          type="text"
+          placeholder="Password"
+          onChange={ (e) => setFormLogin({...formLogin, password: e.target.value}) }
+        />
+        <button
+          type="button"
+          disabled={!(regexEmail.test(formLogin.email) && formLogin.password.length > 6)}
+          onClick={handleSubmit}
+        >
+          Enter
+        </button>
       </form>
     </main>
   );
