@@ -1,6 +1,6 @@
 import Login from './pages/Login/page'
 
-export default function Home() {
+export default function App() {
   return (
     <Login />
   )

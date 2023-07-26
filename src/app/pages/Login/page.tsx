@@ -1,17 +1,20 @@
 'use client';
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import tomate from '../../images/tomate.png';
 import logo from '../../images/logoRecipesApp.png';
 import styles from './page.module.css'
 import Image from 'next/image';
 import { setUserLocalStorage } from '../../../../services/localStorage/userLogin';
+import { useRouter } from 'next/navigation';
 
 const Login = () => {
   const [formLogin, setFormLogin] = useState({email: '', password: ''});
   const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const route = useRouter();
 
   const handleSubmit = () => {
     setUserLocalStorage({ email: formLogin.email });
+    route.push('/pages/Home');
   };
 
   return (
