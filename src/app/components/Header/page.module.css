@@ -1,7 +1,3 @@
-.displayNone {
-  display: none;
-}
-
 .headerContainer {
   /* background-color: aqua; */
   width: 100%;
@@ -32,12 +28,6 @@
 .headerContainerNavIcons {
   display: flex;
   gap: 1rem;
-}
-
-.headerContainerNavIcons button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
 }
 
 .sectionIcon {

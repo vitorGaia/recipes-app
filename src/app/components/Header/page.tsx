@@ -22,7 +22,9 @@ function Header() {
     setActiveSearch,
   } = useContext(SearchContext);
   const pathname = usePathname();
+  
   const formatPath = pathname.substring(pathname.lastIndexOf("/") + 1).toLowerCase();
+
   const icons: Icons = {
     meals: headerIcons.mealsIcon,
     drinks: headerIcons.drinksIcon,
@@ -51,16 +53,14 @@ function Header() {
           />
         </div>
         <div className={styles.headerContainerNavIcons}>
-          <button>
-            <Image
-              src={headerIcons.iconePesquisar}
-              alt="logo"
-              width="27"
-              height="27"
-              priority
-              onClick={() => setActiveSearch(!activeSearch)}
-            />
-          </button>
+          <Image
+            src={headerIcons.iconePesquisar}
+            alt="logo"
+            width="27"
+            height="27"
+            priority
+            onClick={() => setActiveSearch(!activeSearch)}
+          />
           <Link href='/pages/Profile'>
             <Image
               src={headerIcons.iconePerfil}
@@ -82,7 +82,7 @@ function Header() {
         />
         <span>{formatPath.toUpperCase()}</span>
       </div>
-      <div className={!activeSearch ? styles.displayNone : styles.headerActiveSearch}>
+      <div className={!activeSearch ? 'displayNone' : styles.headerActiveSearch}>
         <input type="text" placeholder="Search" />
         <div>
           <label>
