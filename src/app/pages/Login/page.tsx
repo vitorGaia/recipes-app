@@ -1,12 +1,12 @@
 'use client';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import tomate from '../../images/tomate.png';
 import logo from '../../images/logoRecipesApp.png';
 import styles from './page.module.css'
 import Image from 'next/image';
 import { setUserLocalStorage } from '../../../../services/localStorage/userLogin';
 
-function Login() {
+const Login = () => {
   const [formLogin, setFormLogin] = useState({email: '', password: ''});
   const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -29,6 +29,7 @@ function Login() {
         width={500}
         height={500}
         className={styles.tomateImage}
+        priority
       />
       <form className={styles.loginForm}>
         <span>LOGIN</span>
