@@ -15,7 +15,7 @@ import { usePathname } from 'next/navigation';
 function Header() {
   interface Icons {
     [key: string]: string;
-    home: string;
+    meals: string;
     drinks: string;
     doneRecipes: string;
     favorites: string;
@@ -24,7 +24,7 @@ function Header() {
   const pathname = usePathname();
   const formatPath = pathname.substring(pathname.lastIndexOf("/") + 1).toLowerCase();
   const icons: Icons = {
-    home: mealsIcon,
+    meals: mealsIcon,
     drinks: drinksIcon,
     doneRecipes: doneRecipesIcon,
     favorites: favoritesIcon,
@@ -71,11 +71,11 @@ function Header() {
         <Image
           src={icons[formatPath]}
           alt="logo"
-          width="45"
-          height="45"
+          width="30"
+          height="30"
           priority
         />
-        <span>{formatPath}</span>
+        <span>{formatPath.toUpperCase()}</span>
       </div>
     </div>
   );

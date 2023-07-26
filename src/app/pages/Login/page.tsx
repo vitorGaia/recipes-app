@@ -14,7 +14,7 @@ const Login = () => {
 
   const handleSubmit = () => {
     setUserLocalStorage({ email: formLogin.email });
-    route.push('/pages/Home');
+    route.push('/pages/Meals');
   };
 
   return (
