@@ -26,6 +26,12 @@ export type Meals = {
   strMealThumb: string;
 };
 
+export type Drinks = {
+  idMeal: string;
+  strMeal: string;
+  strMealThumb: string;
+};
+
 export type SearchProviderProps = {
   children: ReactNode;
 }

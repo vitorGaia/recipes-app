@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 import { Icons, Meals, SearchContextValues, SearchProviderProps } from "../types";
 import { headerIcons } from "../images/header";
 import { usePathname } from "next/navigation";
-import { getMealsByParams } from "../../../services/api/search";
+import { getDrinksByParams, getMealsByParams } from "../../../services/api/search";
 
 const defaultSearchContextValues: SearchContextValues = {
   activeSearch: false,
@@ -44,8 +44,14 @@ const SearchProvider = ({ children }: SearchProviderProps) => {
       global.alert('Your search must have only 1 (one) character');
       return;
     }
-    const data = await getMealsByParams<Meals[]>(searchType, searchQuery);
-    console.log(data);
+    if (pathname === '/pages/Meals') {
+      const data = await getMealsByParams<Meals[]>(searchType, searchQuery);
+      console.log(data);
+    }
+    if (pathname === '/pages/Drinks') {
+      const data = await getDrinksByParams<Meals[]>(searchType, searchQuery);
+      console.log(data);
+    }
   };
 
   const values = {
