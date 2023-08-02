@@ -1,15 +1,14 @@
 'use client';
-import { ReactNode } from "react";
 import { SearchProvider } from "./SearchProvider";
-
-interface SearchProviderProps {
-  children: ReactNode;
-}
+import { HomeProvider } from "./HomeProvider";
+import { SearchProviderProps } from "../types/SearchProvider";
 
 export function Providers({ children }: SearchProviderProps) {
   return (
     <SearchProvider>
-      {children}
+      <HomeProvider>
+        {children}
+      </HomeProvider>
     </SearchProvider>
   );
 }

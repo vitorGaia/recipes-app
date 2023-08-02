@@ -13,13 +13,12 @@ export type SearchContextValues = {
   activeSearch: boolean;
   setActiveSearch: Dispatch<SetStateAction<boolean>>;
   icons: Icons;
-  formatPath: string,
-  setSearchType: Dispatch<SetStateAction<string>>,
-  setSearchQuery: Dispatch<SetStateAction<string>>,
-  handleSearch: MouseEventHandler<HTMLButtonElement>,
+  formatPath: string;
+  setSearchType: Dispatch<SetStateAction<string>>;
+  setSearchQuery: Dispatch<SetStateAction<string>>;
+  handleSearch: MouseEventHandler<HTMLButtonElement>;
   searchButtonDisable: boolean;
 }
-
 export type Meals = {
   idMeal: string;
   strMeal: string;

@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { Icons, Meals, SearchContextValues, SearchProviderProps } from "../types";
+import { Drinks, Icons, Meals, SearchContextValues, SearchProviderProps } from "../types/SearchProvider";
 import { headerIcons } from "../images/header";
 import { usePathname } from "next/navigation";
 import { getDrinksByParams, getMealsByParams } from "../../../services/api/search";
@@ -27,6 +27,7 @@ const SearchProvider = ({ children }: SearchProviderProps) => {
   const [activeSearch, setActiveSearch] = useState<boolean>(false);
   const [searchType, setSearchType] = useState<string>('');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [headerRecipes, setHeaderRecipes] = useState<Meals[] | Drinks[]>([]);
   const pathname = usePathname();
 
   const icons: Icons = {
