@@ -19,6 +19,7 @@ const defaultSearchContextValues: SearchContextValues = {
   setSearchQuery: () => {},
   handleSearch: () => {},
   searchButtonDisable: true,
+  headerRecipes: [],
 };
 
 const SearchContext = createContext<SearchContextValues>(defaultSearchContextValues);
@@ -47,11 +48,11 @@ const SearchProvider = ({ children }: SearchProviderProps) => {
     }
     if (pathname === '/pages/Meals') {
       const data = await getMealsByParams<Meals[]>(searchType, searchQuery);
-      console.log(data);
+      setHeaderRecipes(data);
     }
     if (pathname === '/pages/Drinks') {
       const data = await getDrinksByParams<Meals[]>(searchType, searchQuery);
-      console.log(data);
+      setHeaderRecipes(data);
     }
   };
 
@@ -64,6 +65,7 @@ const SearchProvider = ({ children }: SearchProviderProps) => {
     setSearchQuery,
     handleSearch,
     searchButtonDisable,
+    headerRecipes,
   };
 
   return (

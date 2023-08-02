@@ -18,7 +18,9 @@ export type SearchContextValues = {
   setSearchQuery: Dispatch<SetStateAction<string>>;
   handleSearch: MouseEventHandler<HTMLButtonElement>;
   searchButtonDisable: boolean;
-}
+  headerRecipes: Meals[] | Drinks[];
+};
+
 export type Meals = {
   idMeal: string;
   strMeal: string;
@@ -26,9 +28,9 @@ export type Meals = {
 };
 
 export type Drinks = {
-  idMeal: string;
-  strMeal: string;
-  strMealThumb: string;
+  idDrink: string;
+  strDrink: string;
+  strDrinkThumb: string;
 };
 
 export type SearchProviderProps = {
