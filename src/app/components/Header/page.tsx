@@ -1,22 +1,14 @@
 'use client';
-import Image from 'next/image';
 import { headerIcons } from '../../images/header';
 import { usePathname } from 'next/navigation';
-import Link from 'next/link';
 import { useContext } from 'react';
 import { SearchContext } from '@/app/contexts/SearchProvider';
+import { Icons } from '@/app/types';
+import Image from 'next/image';
+import Link from 'next/link';
 import styles from './page.module.css';
 
 function Header() {
-  interface Icons {
-    [key: string]: string;
-    meals: string;
-    drinks: string;
-    donerecipes: string;
-    favorites: string;
-    profile: string;
-  }
-
   const {
     activeSearch,
     setActiveSearch,

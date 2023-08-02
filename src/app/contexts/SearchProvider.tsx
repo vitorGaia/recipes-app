@@ -1,13 +1,5 @@
-import { Dispatch, ReactNode, SetStateAction, createContext, useState } from "react";
-
-interface SearchProviderProps {
-  children: ReactNode;
-}
-
-interface SearchContextValues {
-  activeSearch: boolean;
-  setActiveSearch: Dispatch<SetStateAction<boolean>>;
-}
+import { createContext, useState } from "react";
+import { SearchContextValues, SearchProviderProps } from "../types";
 
 const defaultSearchContextValues: SearchContextValues = {
   activeSearch: false,
