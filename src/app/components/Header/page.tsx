@@ -1,9 +1,7 @@
 'use client';
 import { headerIcons } from '../../images/header';
-import { usePathname } from 'next/navigation';
 import { useContext } from 'react';
 import { SearchContext } from '@/app/contexts/SearchProvider';
-import { Icons } from '@/app/types';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './page.module.css';
@@ -12,18 +10,13 @@ function Header() {
   const {
     activeSearch,
     setActiveSearch,
+    icons,
+    formatPath,
+    setSearchType,
+    setSearchQuery,
+    handleSearch,
+    searchButtonDisable,
   } = useContext(SearchContext);
-  const pathname = usePathname();
-  
-  const formatPath = pathname.substring(pathname.lastIndexOf("/") + 1).toLowerCase();
-
-  const icons: Icons = {
-    meals: headerIcons.mealsIcon,
-    drinks: headerIcons.drinksIcon,
-    donerecipes: headerIcons.doneRecipesIcon,
-    favorites: headerIcons.favoritesIcon,
-    profile: headerIcons.profileIcon,
-  };
   
   return (
     <div className={styles.headerContainer}>
@@ -75,22 +68,22 @@ function Header() {
         <span>{formatPath.toUpperCase()}</span>
       </div>
       <div className={!activeSearch ? 'displayNone' : styles.headerActiveSearch}>
-        <input type="text" placeholder="Search" />
+        <input type="text" placeholder="Search" onChange={ (e) => setSearchQuery(e.target.value) } />
         <div>
           <label>
-            <input type="radio" />
+            <input type="radio" value='ingredient' onChange={ (e) => setSearchType(e.target.value) } />
             Ingredient
           </label>
           <label>
-            <input type="radio" />
+            <input type="radio" value='name' onChange={ (e) => setSearchType(e.target.value) } />
             Name
           </label>
           <label>
-            <input type="radio" />
+            <input type="radio" value='first letter' onChange={ (e) => setSearchType(e.target.value) } />
             First Letter
           </label>
         </div>
-        <button>
+        <button disabled={ searchButtonDisable } onClick={ handleSearch }>
           Search
         </button>
       </div>
