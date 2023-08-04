@@ -57,12 +57,10 @@ function Header() {
           </Link>
         </div>
       </nav>
-      <div className={styles.sectionIcon}>
+      <div className={!icons[formatPath] ? 'displayNone' : styles.sectionIcon}>
         <Image
-          src={icons[formatPath]}
+          src={icons[formatPath] || headerIcons.iconePesquisar}
           alt="logo"
-          width="30"
-          height="30"
           priority
         />
         <span>{formatPath.toUpperCase()}</span>

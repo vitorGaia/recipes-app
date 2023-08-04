@@ -1,11 +1,23 @@
 'use client';
 import Header from '@/app/components/Header/page';
 import styles from './page.module.css';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Footer from '@/app/components/Footer/page';
-// req 12
+import { useContext, useEffect } from 'react';
+import { SearchContext } from '@/app/contexts/SearchProvider';
+
 function Home() {
+  const route = useRouter();
   const pathname = usePathname();
+  const { headerRecipes, activeSearch, setActiveSearch } = useContext(SearchContext);
+
+  useEffect(() => {
+    const { meals } = headerRecipes;
+    if (meals && meals.length === 1) {
+      route.push(`${pathname}/${meals[0].idMeal}`);
+      setActiveSearch(false);
+    }
+  }, [activeSearch, headerRecipes, pathname, route, setActiveSearch]);
 
   return (
     <main className={styles.homeContainer}>

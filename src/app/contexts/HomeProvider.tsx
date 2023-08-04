@@ -9,9 +9,9 @@ const HomeContext = createContext({});
 const HomeProvider = ({ children }: HomeProviderProps) => {
   const { headerRecipes } = useContext(SearchContext);
 
-  useEffect(() => {
-    console.log(headerRecipes);
-  }, [headerRecipes]);
+  // useEffect(() => {
+  //   console.log(headerRecipes);
+  // }, [headerRecipes]);
 
   const values = {};
 

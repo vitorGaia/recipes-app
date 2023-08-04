@@ -18,8 +18,14 @@ export type SearchContextValues = {
   setSearchQuery: Dispatch<SetStateAction<string>>;
   handleSearch: MouseEventHandler<HTMLButtonElement>;
   searchButtonDisable: boolean;
-  headerRecipes: Meals[] | Drinks[];
+  headerRecipes: Recipes;
 };
+
+export type Recipes = {
+  meals: Meals[];
+  drinks: Drinks[];
+  length: number;
+}
 
 export type Meals = {
   idMeal: string;

@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { Drinks, Icons, Meals, SearchContextValues, SearchProviderProps } from "../types/SearchProvider";
+import { Drinks, Icons, Meals, Recipes, SearchContextValues, SearchProviderProps } from "../types/SearchProvider";
 import { headerIcons } from "../images/header";
 import { usePathname } from "next/navigation";
 import { getDrinksByParams, getMealsByParams } from "../../../services/api/search";
@@ -19,7 +19,11 @@ const defaultSearchContextValues: SearchContextValues = {
   setSearchQuery: () => {},
   handleSearch: () => {},
   searchButtonDisable: true,
-  headerRecipes: [],
+  headerRecipes: {
+    meals: [],
+    drinks: [],
+    length: 0,
+  },
 };
 
 const SearchContext = createContext<SearchContextValues>(defaultSearchContextValues);
@@ -28,7 +32,7 @@ const SearchProvider = ({ children }: SearchProviderProps) => {
   const [activeSearch, setActiveSearch] = useState<boolean>(false);
   const [searchType, setSearchType] = useState<string>('');
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [headerRecipes, setHeaderRecipes] = useState<Meals[] | Drinks[]>([]);
+  const [headerRecipes, setHeaderRecipes] = useState<Recipes>(defaultSearchContextValues.headerRecipes);
   const pathname = usePathname();
 
   const icons: Icons = {
@@ -47,11 +51,11 @@ const SearchProvider = ({ children }: SearchProviderProps) => {
       return;
     }
     if (pathname === '/pages/Meals') {
-      const data = await getMealsByParams<Meals[]>(searchType, searchQuery);
+      const data = await getMealsByParams<Recipes>(searchType, searchQuery);
       setHeaderRecipes(data);
     }
     if (pathname === '/pages/Drinks') {
-      const data = await getDrinksByParams<Meals[]>(searchType, searchQuery);
+      const data = await getDrinksByParams<Recipes>(searchType, searchQuery);
       setHeaderRecipes(data);
     }
   };
